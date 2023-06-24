@@ -1,0 +1,5 @@
+# .dockerignore
+.gitignore
+Dockerfile
+/static/uploads/*
+venv

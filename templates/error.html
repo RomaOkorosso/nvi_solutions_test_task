@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Error{% endblock %}
+
+{% block content %}
+<!--Error-->
+<div class="div-content-center">
+    <h1>Error</h1>
+</div>
+<div class="div-content-center">
+    <p>{{ error }}</p>
+</div>
+<!--======-->
+
+<!--Upload another img-->
+<div class="div-content-center">
+    <h2>Upload another image</h2>
+</div>
+
+<div class="div-form">
+    <form action="/predict/" enctype="multipart/form-data" method="post">
+        <input name="file" type="file">
+        <input type="submit">
+    </form>
+</div>
+<!--====================-->
+{% endblock %}

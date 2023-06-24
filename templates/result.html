@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}Result{% endblock %}
+
+{% block content %}
+<div class="div-content-center">
+    <h1 id="result-text">Inner text</h1>
+</div>
+<div id="img-placeholder" class="div-content-center">
+
+</div>
+
+<div class="div-content-center">
+    <p>Width: {{ width }}px</p>
+</div>
+<div class="div-content-center">
+    <p>Height: {{ height }}px</p>
+</div>
+<div class="div-content-center">
+    <p>Prediction: {{ prediction }}</p>
+</div>
+
+<div class="div-content-center">
+    <h2>Upload another image</h2>
+</div>
+<div class="div-form">
+    <form action="/predict/" enctype="multipart/form-data" method="post">
+        <input name="file" type="file">
+        <input type="submit">
+    </form>
+</div>
+
+<script>
+    window.onload = function () {
+        let filename = "{{ filename }}";
+        let width = "{{ width }}";
+        let height = "{{ height }}";
+        let img = "{{ img }}";
+
+        // make filename without extension
+        const filename_without_extension = del_file_extension(filename);
+        // create img element for img tag
+        img = document.createElement("img");
+        img.src = "/static/uploads/" + filename;
+        img.alt = del_file_extension(filename);
+
+        // if image is large make it smaller with saving aspect ratio
+        if (width > 500) {
+            img.width = 500;
+            img.height = height / (width / 500);
+        } else {
+            img.width = width;
+            img.height = height;
+        }
+
+
+        let img_div = document.getElementById("img-placeholder");
+        img_div.appendChild(img);
+
+        let div_result = document.getElementById("result-text");
+        div_result.innerHTML = "Result for " + filename_without_extension;
+    };
+
+    function del_file_extension(filename) {
+        return filename.split('.').slice(0, -1).join('.');
+    }
+</script>
+{% endblock %}
