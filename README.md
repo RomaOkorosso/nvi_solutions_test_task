@@ -1,6 +1,6 @@
 # NVI Solutions test task
 
-![preview](https://github.com/romaokorosso/nvi_solutions_test_task/blob/main/img.png?raw=true)
+![preview](https://github.com/romaokorosso/nvi_solutions_test_task/blob/master/img.png?raw=true)
 
 ## Task checklist
 
